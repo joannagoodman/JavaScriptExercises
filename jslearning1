@@ -1,0 +1,322 @@
+//variables and data types
+
+//variable mutation
+
+//type coercion
+
+//Basic operators
+
+//Logical operators
+
+var johnOlder = ageJohn < ageMark;
+console.log(johnOlder);
+
+// typeof operator
+console.log(typeof johnOlder);
+console.log(typeof ageJohn);
+console.log(typeof 'Mark is older than John');
+
+var x;
+console.log(typeof x); //comes back as undefined
+
+//Operator presedence
+
+var now = 2018;
+var yearJohn = 1989;
+var fullAge = 18;
+
+//Multiple operators
+var isFullAge = now - yearJohn >= fullAge; //true
+console.log(isFullAge);
+
+//Grouping
+var ageJohn = now - yearJohn;
+var ageMark = 35;
+var average = (ageJohn + ageMark) / 2; //the grouping has presedence over the dividing
+
+console.log(average);
+
+//which operator should be used first?
+//we want parts of the operation to work first e.g {now-yearJohn}
+// we need to consider operator presedence which can be found online detailing which is greater or less than another
+
+//Multiple assignments
+
+var x, y;
+x = y = (3 + 5) * 4 - 6; // 8 * 4 - 6 // 32 - 6 // 26 // assigns to both x and y
+console.log(x , y);
+
+//assignment works from right to left. it starts by going from y to x, instead of x to y (example above) 
+
+//more operators
+
+x = x * 2;
+x *=2;// this is the same as above, means not having to write x twice
+console.log(x);
+x += 10; // same as writing x = x + 10
+
+x++; // the plus plus adds 1 to x
+
+// coding challenge 1
+
+var massMark = 78; // have to be in kg
+var heightMark = 1.69; //have to be in meters
+
+var massJohn = 92;
+var heightJohn = 1.95; 
+
+//calculate both bmis
+var BMIMark = massMark / (heightMark * heightMark);
+var BMIJohn = massJohn / (heightMark * heightJohn);
+console.log(BMIMark, BMIJohn);
+
+var markHigherBMI = BMIMark > BMIJohn;
+console.log('Is Mark\'s BMI higher than John/'s? ' + markHigherBMI);
+
+
+//if/else - only execute certain parts of the code or execute it multiple times
+
+//if () < in the parenthesis we have to right a logical condition
+
+var firstName = 'John';
+var civilStatus = 'single';
+
+if (civilStatus === 'married'){
+	console.log(firstName + ' is married!');
+} // equals false, prints out nothing because it is false
+else{
+	console.log(firstName + ' will hopefully marry soon');
+}
+
+//another example is to pass a true or false value into the code
+
+var isMarried = true;
+if (isMarried){
+	console.log(firstName + ' is married');
+}else{
+	console.log(firstName + ' will hopefully marry soon');
+}
+
+//Boolean logic
+
+// Ternary operator (3 parts that operate with the operator) and switch statements
+
+var firstName = 'John ';
+var age = 22;
+
+age >= 18 ? console.log(firstName + ' drinks beer.')
+: console.log(firstName + ' drinks juice.')
+
+var drink = age >= 18 ? 'beer' : 'juice'; //result will be beer if the age is greater or equal to 18
+
+// question mark is executed before the assignment operator
+
+//Switch statements *look into these a bit more*
+
+var job = 'teacher';
+switch (job){
+	case 'teacher':
+		console.log(firstName + ' teaches kids how to code.');
+		break;
+	case 'driver':
+		console.log(firstName + ' drives an uber.');
+		break;
+	case 'designer':
+		console.log(firstName + ' designs cool pictures.');
+		break;
+	default:
+		console.log(firstName + ' does something else.');
+}
+
+//Truthy and Falsy values and equality operators
+
+//falsey values: undefined, null, 0, '', NaN- will convert to false in a true/false condition
+//Truthy values: any value that is not falsy
+
+var height;
+
+if (height){
+	console.log
+}
+
+// coding challenge 2
+
+var scoreJohn = (189 + 120 + 103) / 3;
+var scoreMike = (129 + 94 + 103) / 3;
+var scoreMary = (97 + 134 + 105) / 3;
+console.log(scoreJohn, scoreMike, scoreMary);
+
+if (scoreJohn > scoreMike && scoreMike > scoreMary){
+	console.log('John\'s team wins with ' + scoreJohn + ' points');
+} else if (scoreMike > scoreJohn && scoreMike > scoreMary){
+	console.log('Mike\'s team wins with ' + scoreMike + ' points');
+} else if (scoreMary > scoreJohn && scoreMary > scoreMike){
+	console.log('Mary\'s team wins with ' + scoreMary + ' points');
+} else{
+	console.log('There is a draw');
+}
+
+// Functions
+
+functions calculateAge(birthYear){
+	return 2018 - birthYear;
+}
+
+var ageJohn = calculateAge(1990);
+var ageMike = calculateAge(1948);
+var ageJayne = calculateAge(1969);
+console.log(ageJohn. ageMike, ageJane);
+
+function yearsUntilRetirement(year, firstName){
+	var age = calculateAge(year);
+	var retirement = 65 - age;
+	
+	if (retirement > 0){
+	console.log(firstName + ' retires in ' + retirement + ' years.');
+	} else {
+	console.log (firstName + ' is already retired');
+	}
+
+}
+
+yearsUntilRetirement(1990, 'John');
+yearsUntilRetirement(1948, 'Mike');
+yearsUntilRetirement(1969, 'Jayne');
+
+// Function statements and expressions, this is another way of writing a function
+
+//write the function keyword, then the arguements and then assign it to a variable
+
+//Function declaration
+function whatDoYouDo(job, firstName){}
+
+//Function expression
+var whatDoYouDo = function(job, firstName){
+	switch(job){
+	case 'teacher':
+		return firstName + ' teaches kids how to code';
+	case 'driver':
+		return firstName + ' drives customers in lisbon';
+	case 'designer':
+		return firstName + ' makes beautiful websites';
+	}	
+	default:
+	return firstName + ' does something else';
+}
+
+console.log(whatDoYouDo('teacher', 'John'));
+
+// expressions- always provide a value, anything we do that provides a result is an expression, when js expects a value, we will always need to write an expression. 
+
+// statements- just perform actions, do not provide immediate results if(true){ console.log(23);} - returns, undefined and does not provide a result.
+
+// Arrays
+
+//Functions that can be applied specifically to arrays are called methods
+
+// Method example- there are tons of methods for arrays
+
+john.push('blue'); //will add the element to the end of the array
+john.unshift('Mr.'); //will add to the start of the array
+john.pop(); //removes the last element from the array
+john.shift(); //removes the Mr. from the start of the array
+
+john.indexOf(1990); //will return the position of the arguement in the array
+
+console.log(john.indexOf(1990));
+
+//if the element is not in the array, it will return -1.
+//good way of testing what is in the array and what is not
+
+var isDesigner = john.indexOF('designer') === -1 ? 'John is NOT a designer' : 'John IS a designer';
+console.log(isDesigner);
+
+
+// Coding challenge 3
+
+function tipCalculator(bill){
+	var percentage;
+
+	if (bill < 50){
+		percentage = .2;
+	} else if (bill >= 50 && bill < 200){
+		percentage = .15;
+	} else {
+		percentage = .1;
+	}
+	return percentage * bill;
+}
+
+/*console.log(tipCalculator(10));
+checks if tip calculator *is working
+*/
+
+var bills = [124, 48, 268];
+var tips = [tipCalculator(bills[0]),
+			tipCalculator(bills[1]),
+			tipCalculator(bills[2])];
+
+var finalValues= [bills[0] + tips[0]],
+				 [bills[0] + tips[1],
+				 [bills[0] + tips[2];
+
+console.log(tips, finalValues);
+
+//Objects and Properties
+
+// Loops and iteration (for loop, while loop)
+
+for (var i = 1; i <= 20; i += 2){
+	console.log(i);
+}
+
+var john = ['john', 'smith', 1990, 'designer', false];
+
+for (var i=0; i < john.length; i++){
+	console.log(john[i]);
+}// looping through array called john and returns 4
+
+//in a while loop is only the condition
+
+var i = 0;
+while(i< john.length){
+	//should keep executing this code
+	console.log(john[i]);
+	i++;
+}
+
+//continue and break statements
+
+//we use break to break out of the loop
+//we use continue to quit the current iteration of the loop and contine with the next one
+
+// this keyword/ this variable
+
+'this' variable- points at the global object, the window object in the browser
+
+method call- the this variable points to the object that is calling the method
+
+The this keyword is not assigned a value until a function where it is defined, is actually called.
+
+console.log('this');
+
+// returns the window object, the default object for the 'this' keyword
+
+calculateAge(1985);
+
+function calculateAge(year){
+	console.log(2016- year);
+	console.log(this);
+}
+_____
+var john = {
+	name: 'John', 
+	yearOfBirth: 1990,
+	calculateAge: function (){
+	console.log(this);
+	}
+}
+
+john.calculateAge();
+
+// End of Theory learning
